@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-btn-hover: var(--btn-hover);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-strong: var(--border-strong);
+  --color-window: var(--bg-window);
+  --color-panel: var(--bg-panel);
+  --color-sidebar: var(--bg-sidebar);
+  --color-sidebar-active: var(--bg-sidebar-active);
+  --color-sidebar-hover: var(--bg-sidebar-hover);
+  --color-input: var(--bg-input);
+}
+
+:root {
+  color-scheme: light;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  --accent: #0066cc;
+  --accent-soft: #e5f0fa;
+  --btn-hover: #005bb5;
+  
+  --text-primary: #1d1d1f;
+  --text-secondary: #86868b;
+  --text-tertiary: #a1a1a6;
+  
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.15);
+  
+  --bg-window: #f5f5f7;
+  --bg-panel: #ffffff;
+  --bg-sidebar: rgba(245, 245, 247, 0.6);
+  --bg-sidebar-active: rgba(0, 0, 0, 0.05);
+  --bg-sidebar-hover: rgba(0, 0, 0, 0.03);
+  --bg-input: #ffffff;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background-color: var(--bg-window);
+  color: var(--text-primary);
+}
+
+html[data-theme='light'] body {
+  color-scheme: light;
+}
+
+/* Base styles for app to match default macOS light look */
+.lumina-grid-bg {
+  /* Removed old grid */
+}
+
+.lumina-atmosphere {
+  /* Removed old atmosphere glow */
+}
+
+::selection {
+  background: rgba(0, 102, 204, 0.24);
+  color: var(--text-primary);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.4) transparent;
+}
+
+.lumina-control {
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-input);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.lumina-control:focus,
+.lumina-control:focus-visible {
+  border-color: var(--accent);
+  background: var(--bg-input);
+  outline: 2px solid rgba(0, 102, 204, 0.2);
+  outline-offset: -1px;
+}
+
+.rich-note-editor .ProseMirror {
+  min-height: 100%;
+  padding: 8px 8px 10px;
+  outline: none;
+  box-shadow: none;
+}
+
+.rich-note-editor .ProseMirror:focus,
+.rich-note-editor .ProseMirror:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.rich-note-editor .ProseMirror p {
+  margin: 0;
+  color: #111827;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.rich-note-editor .ProseMirror p + p {
+  margin-top: 0.35rem;
+}
+
+.rich-note-editor .ProseMirror h1,
+.rich-note-editor .ProseMirror h2,
+.rich-note-editor .ProseMirror h3 {
+  margin: 0.4rem 0;
+  line-height: 1.2;
+  color: #111827;
+}
+
+.rich-note-editor .ProseMirror ul,
+.rich-note-editor .ProseMirror ol {
+  margin: 0.35rem 0;
+  padding-left: 1.25rem;
+}
+
+.rich-note-editor .ProseMirror ul {
+  list-style: disc;
+}
+
+.rich-note-editor .ProseMirror ol {
+  list-style: decimal;
+}
+
+.rich-note-editor .ProseMirror ul[data-type='taskList'] {
+  list-style: none;
+  margin: 0.4rem 0;
+  padding-left: 0;
+}
+
+.rich-note-editor .ProseMirror li[data-type='taskItem'] {
+  display: flex;
+  gap: 0.45rem;
+  align-items: flex-start;
+}
+
+.rich-note-editor .ProseMirror li[data-type='taskItem'] > label {
+  margin-top: 0.15rem;
+}
+
+.rich-note-editor .ProseMirror li[data-type='taskItem'] > div {
+  flex: 1;
+}
+
+.rich-note-editor .ProseMirror li + li {
+  margin-top: 0.3rem;
+}
+
+.rich-note-editor .ProseMirror blockquote {
+  margin: 0.6rem 0;
+  border-left: 2px solid rgba(113, 113, 122, 0.35);
+  padding-left: 0.7rem;
+  color: rgba(63, 63, 70, 0.9);
+}
+
+.rich-note-editor .ProseMirror code {
+  border-radius: 0.4rem;
+  background: rgba(228, 228, 231, 0.9);
+  padding: 0.1rem 0.35rem;
+  font-size: 0.75rem;
+}
+
+.rich-note-editor .ProseMirror strong {
+  font-weight: 700;
+}
+
+.rich-note-editor .ProseMirror em {
+  font-style: italic;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
