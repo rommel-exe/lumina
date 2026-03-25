@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "tauri": "tauri"
+    "tauri": "node scripts/tauri-wrapper.mjs",
+    "generate:latest-json": "node scripts/generate-latest-json.mjs"
   },
   "dependencies": {
     "@fullcalendar/core": "^6.1.20",

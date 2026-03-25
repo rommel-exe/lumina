@@ -1,7 +1,7 @@
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
-  let updater_pubkey = std::env::var("TAURI_UPDATER_PUBKEY").ok();
-  let updater_endpoint = std::env::var("TAURI_UPDATER_ENDPOINT").ok();
+  let updater_pubkey = option_env!("TAURI_UPDATER_PUBKEY").map(str::to_string);
+  let updater_endpoint = option_env!("TAURI_UPDATER_ENDPOINT").map(str::to_string);
 
   let builder = tauri::Builder::default().plugin(tauri_plugin_updater::Builder::new().build());
 
@@ -56,6 +56,18 @@ pub fn run() {
                   app_handle.package_info().version,
                   update.version
                 );
+
+                if let Err(error) = update
+                  .download_and_install(
+                    |_chunk_length, _content_length| {},
+                    || {},
+                  )
+                  .await
+                {
+                  log::warn!("Update download/install failed: {error}");
+                } else {
+                  log::info!("Update installed successfully");
+                }
               }
               Ok(None) => {
                 log::info!("No updates available");
