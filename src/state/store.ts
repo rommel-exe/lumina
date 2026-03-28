@@ -9,6 +9,7 @@ import type {
   NotePage,
   Priority,
   Task,
+  TaskKind,
   TaskStatus,
   ViewKey,
   WhiteboardElementKind,
@@ -166,8 +167,10 @@ const normalizeTasks = (tasks: Task[]) =>
       todayFocus: Boolean(task.todayFocus),
       dueDate: task.dueDate,
       dueDateTime: task.dueDateTime,
+      endDateTime: task.endDateTime,
       recurrenceRule: task.recurrenceRule,
       scheduledAt: task.scheduledAt,
+      kind: task.kind ?? 'task',
       contextId: task.contextId,
       parentId: task.parentId,
       sectionId: task.sectionId,
@@ -201,8 +204,10 @@ type LuminaState = {
       todayFocus?: boolean
       dueDate?: string
       dueDateTime?: string
+      endDateTime?: string
       recurrenceRule?: string
       scheduledAt?: string
+      kind?: TaskKind
       contextId?: string
       parentId?: string
       sectionId?: string
@@ -225,8 +230,10 @@ type LuminaState = {
         | 'todayFocus'
         | 'dueDate'
         | 'dueDateTime'
+        | 'endDateTime'
         | 'recurrenceRule'
         | 'scheduledAt'
+        | 'kind'
         | 'contextId'
         | 'parentId'
         | 'sectionId'
@@ -358,8 +365,10 @@ export const useLuminaStore = create<LuminaState>((set, get) => ({
         todayFocus: options?.todayFocus ?? false,
         dueDate: options?.dueDate,
         dueDateTime: options?.dueDateTime,
+        endDateTime: options?.endDateTime,
         recurrenceRule: options?.recurrenceRule,
         scheduledAt: options?.scheduledAt,
+        kind: options?.kind ?? 'task',
         contextId: options?.contextId,
         parentId: options?.parentId,
         sectionId: options?.sectionId,

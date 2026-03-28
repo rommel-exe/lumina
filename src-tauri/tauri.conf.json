@@ -1,13 +1,13 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
   "productName": "lumina",
-  "version": "0.1.0",
+  "version": "0.0.2",
   "identifier": "com.jackfu.lumina",
   "build": {
     "frontendDist": "../dist",
     "devUrl": "http://localhost:5173",
     "beforeDevCommand": "npm run dev",
-    "beforeBuildCommand": "npm run build"
+    "beforeBuildCommand": "node /Users/jackfu/TOP/lumina/scripts/bump-tauri-version.mjs && npm run build"
   },
   "app": {
     "windows": [

@@ -12,7 +12,7 @@ export const EmailView = () => {
   const selected = emails.find((email) => email.id === selectedId)
 
   return (
-    <div className="grid h-full min-h-0 grid-cols-1 gap-2 overflow-hidden sm:gap-3 lg:grid-cols-[18rem_minmax(0,1fr)]">
+    <div className="grid h-full min-h-0 grid-cols-1 gap-2 overflow-hidden sm:gap-3 lg:grid-cols-[14rem_minmax(0,1fr)]">
       <GlassPanel className="min-h-0 overflow-y-auto">
         <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.2em] text-text-tertiary">Inbox</p>
         <div className="space-y-1.5">

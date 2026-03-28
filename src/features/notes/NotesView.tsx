@@ -22,7 +22,7 @@ const ListRow = ({ label, active, onClick, onRename, showPill = false }: ListRow
     type="button"
     onClick={onClick}
     onDoubleClick={onRename}
-    className={`mx-1.5 my-1 flex h-10 w-[calc(100%-0.75rem)] items-center gap-2 rounded-[16px] px-3 text-left text-[13px] transition ${
+    className={`mx-1 my-0.5 flex h-8 w-[calc(100%-0.5rem)] items-center gap-1.5 rounded-[12px] px-2 text-left text-[12px] transition ${
       active
         ? 'bg-accent-soft text-text-primary shadow-sm'
         : 'text-text-secondary hover:bg-window hover:text-text-primary'
@@ -520,8 +520,8 @@ export const NotesView = () => {
 
   return (
     <div className="lumina-panel flex h-full w-full overflow-hidden rounded-[32px]">
-      <aside className="lumina-sidebar flex w-[360px] shrink-0 flex-col">
-        <div className="relative flex h-16 items-center justify-between border-b border-border-subtle px-4" ref={notebookMenuRef}>
+      <aside className="lumina-sidebar flex w-[252px] shrink-0 flex-col">
+        <div className="relative flex h-13 items-center justify-between border-b border-border-subtle px-2.5" ref={notebookMenuRef}>
           <div className="flex items-center gap-2">
             <BookText size={17} className="text-accent" />
 
@@ -535,7 +535,7 @@ export const NotesView = () => {
                   if (e.key === 'Escape') cancelRename()
                 }}
                 onBlur={commitRename}
-                className={`${notesInputClass} w-[170px] text-[14px]`}
+                className={`${notesInputClass} w-[124px] text-[12px]`}
               />
             ) : (
               <div className="flex items-center gap-1">
@@ -544,7 +544,7 @@ export const NotesView = () => {
                   className="flex items-center gap-1 text-text-primary"
                   onClick={() => setIsNotebookMenuOpen((prev) => !prev)}
                 >
-                  <span className="max-w-[150px] truncate text-[16px] font-semibold leading-none tracking-[-0.03em]">
+                  <span className="max-w-[108px] truncate text-[13px] font-semibold leading-none tracking-[-0.03em]">
                     {activeNotebook?.name ?? 'Notebook'}
                   </span>
                   <ChevronDown size={14} />
@@ -566,7 +566,7 @@ export const NotesView = () => {
 
           <button
             type="button"
-            className="lumina-button lumina-button-secondary h-10 w-10 p-0"
+            className="lumina-button lumina-button-secondary h-8 w-8 p-0"
             onClick={createNotebookInline}
             title="Add notebook"
           >
@@ -574,7 +574,7 @@ export const NotesView = () => {
           </button>
 
           {isNotebookMenuOpen && (
-            <div className="lumina-panel absolute left-4 top-14 z-30 w-[240px] rounded-[22px] p-2">
+            <div className="lumina-panel absolute left-2 top-11 z-30 w-[184px] rounded-[16px] p-1.5">
               <button
                 type="button"
                 className="mb-1 flex w-full items-center gap-2 rounded-[16px] px-3 py-2 text-left text-[12px] font-semibold text-text-primary hover:bg-window"
@@ -611,12 +611,12 @@ export const NotesView = () => {
           )}
         </div>
 
-        <div className="border-b border-border-subtle px-3 py-3">
+        <div className="border-b border-border-subtle px-2 py-2">
           <div className="lumina-segmented rounded-full p-1">
           <button
             type="button"
             onClick={() => setNotesSidebarTab('pages')}
-            className={`lumina-segmented-item px-3 py-1.5 text-[12px] font-semibold ${
+            className={`lumina-segmented-item px-2.5 py-1 text-[11px] font-semibold ${
               notesSidebarTab === 'pages' ? 'is-active' : ''
             }`}
           >
@@ -625,7 +625,7 @@ export const NotesView = () => {
           <button
             type="button"
             onClick={() => setNotesSidebarTab('graph')}
-            className={`lumina-segmented-item px-3 py-1.5 text-[12px] font-semibold ${
+            className={`lumina-segmented-item px-2.5 py-1 text-[11px] font-semibold ${
               notesSidebarTab === 'graph' ? 'is-active' : ''
             }`}
           >
@@ -672,7 +672,7 @@ export const NotesView = () => {
               </div>
               <button
                 type="button"
-                className="border-t border-border-subtle px-4 py-3 text-left text-[13px] font-semibold text-accent hover:bg-window"
+                className="border-t border-border-subtle px-2.5 py-2 text-left text-[12px] font-semibold text-accent hover:bg-window"
                 onClick={createSectionInline}
               >
                 Add section
@@ -717,7 +717,7 @@ export const NotesView = () => {
               </div>
               <button
                 type="button"
-                className="border-t border-border-subtle px-4 py-3 text-left text-[13px] font-semibold text-accent hover:bg-window"
+                className="border-t border-border-subtle px-2.5 py-2 text-left text-[12px] font-semibold text-accent hover:bg-window"
                 onClick={createPageInline}
               >
                 Add page

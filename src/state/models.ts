@@ -1,5 +1,6 @@
 export type Priority = 'High' | 'Medium' | 'Low'
 export type TaskStatus = 'inbox' | 'next' | 'active' | 'waiting' | 'scheduled' | 'done' | 'archived'
+export type TaskKind = 'task' | 'block'
 
 const TASK_STATUS_TRANSITIONS: Record<TaskStatus, TaskStatus[]> = {
   inbox: ['next', 'active', 'waiting', 'scheduled', 'done', 'archived'],
@@ -18,6 +19,7 @@ export const canTransitionTaskStatus = (from: TaskStatus, to: TaskStatus): boole
 
 export type Task = {
   id: string
+  kind?: TaskKind
   title: string
   description?: string
   priority: Priority
@@ -25,6 +27,7 @@ export type Task = {
   todayFocus?: boolean
   dueDate?: string
   dueDateTime?: string
+  endDateTime?: string
   recurrenceRule?: string
   scheduledAt?: string
   contextId?: string
