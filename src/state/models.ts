@@ -123,6 +123,13 @@ export type EmailItem = {
   from: string
   subject: string
   snippet: string
+  body?: string
+  webLink?: string
+  provider?: 'local' | 'outlook'
+  accountHomeId?: string
+  accountLabel?: string
+  isRead?: boolean
+  importance?: 'low' | 'normal' | 'high'
   receivedAt: string
   linkedTaskIds: string[]
   linkedNoteIds: string[]

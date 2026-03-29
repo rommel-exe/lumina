@@ -264,6 +264,7 @@ type LuminaState = {
   linkTaskToNote: (taskId: string, noteId: string) => void
   addWhiteboardElement: (kind: WhiteboardElementKind) => void
   linkEmailToTask: (emailId: string, taskId: string) => void
+  replaceEmails: (emails: EmailItem[]) => void
   updatePomodoro: (elapsedSeconds: number, state: AppData['pomodoro']['state']) => void
   setTheme: (theme: AppData['settings']['theme']) => void
   exportData: () => string
@@ -819,6 +820,29 @@ export const useLuminaStore = create<LuminaState>((set, get) => ({
 
       const links = updateLinks(state.data.links, emailId, taskId, 'task-email')
       const data = { ...state.data, emails, links }
+      syncSnapshot(data)
+      return { data }
+    }),
+
+  replaceEmails: (emails) =>
+    set((state) => {
+      const nextEmailIds = new Set(emails.map((email) => email.id))
+      const currentById = new Map(state.data.emails.map((email) => [email.id, email]))
+
+      const normalizedEmails: EmailItem[] = emails.map((email) => {
+        const existing = currentById.get(email.id)
+        return {
+          ...email,
+          linkedTaskIds: email.linkedTaskIds.length > 0 ? email.linkedTaskIds : existing?.linkedTaskIds ?? [],
+          linkedNoteIds: email.linkedNoteIds.length > 0 ? email.linkedNoteIds : existing?.linkedNoteIds ?? [],
+        }
+      })
+
+      const links = state.data.links.filter(
+        (link) => link.type !== 'task-email' || nextEmailIds.has(link.sourceId),
+      )
+
+      const data = { ...state.data, emails: normalizedEmails, links }
       syncSnapshot(data)
       return { data }
     }),

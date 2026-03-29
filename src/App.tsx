@@ -67,7 +67,7 @@ function App() {
   }
 
   return (
-    <div className="h-[100vh] w-[100vw] bg-window p-0.5 text-text-primary">
+    <div className="h-[100vh] w-[100vw] bg-window p-1.5 text-text-primary">
       <div className="lumina-window-chrome flex h-full w-full overflow-hidden rounded-[20px] font-sans select-none">
         <Sidebar
           activeView={activeView}
@@ -78,7 +78,7 @@ function App() {
         <main className="relative flex min-w-0 flex-1 flex-col overflow-hidden">
           <header
             data-tauri-drag-region
-            className="lumina-toolbar sticky top-0 z-50 flex h-10 shrink-0 items-center justify-between border-b border-border-subtle pl-[50px] pr-2"
+            className="lumina-toolbar sticky top-0 z-50 flex h-12 shrink-0 items-center justify-between border-b border-border-subtle pl-[92px] pr-3"
           >
             <div className="pointer-events-none inline-flex items-center gap-2 rounded-full border border-border-subtle bg-panel px-3 py-1 text-[11px] font-semibold tracking-[0.14em] text-text-secondary">
               <span>{activeView}</span>
