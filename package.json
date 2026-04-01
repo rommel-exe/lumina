@@ -5,12 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "node scripts/bump-tauri-version.mjs",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "tauri": "node scripts/tauri-wrapper.mjs",
-    "tauri:build": "npm run tauri build && node scripts/generate-update-manifest.mjs",
+    "tauri:build": "npm run tauri build",
     "generate:latest-json": "node scripts/generate-latest-json.mjs",
     "generate:update-manifest": "node scripts/generate-update-manifest.mjs"
   },

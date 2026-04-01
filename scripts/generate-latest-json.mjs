@@ -62,9 +62,18 @@ const latest = {
   },
 }
 
-const outputPath = process.env.LATEST_JSON_OUTPUT || path.join(bundleDir, 'latest.json')
-fs.writeFileSync(outputPath, `${JSON.stringify(latest, null, 2)}\n`, 'utf8')
+const outputPaths = process.env.LATEST_JSON_OUTPUT
+  ? [process.env.LATEST_JSON_OUTPUT]
+  : [path.join(bundleDir, 'latest.json'), path.join(bundleDir, 'dmg', 'latest.json')]
 
-console.log(`Generated latest.json at ${outputPath}`)
+for (const outputPath of outputPaths) {
+  const parentDir = path.dirname(outputPath)
+  if (!fs.existsSync(parentDir)) {
+    fs.mkdirSync(parentDir, { recursive: true })
+  }
+  fs.writeFileSync(outputPath, `${JSON.stringify(latest, null, 2)}\n`, 'utf8')
+  console.log(`Generated latest.json at ${outputPath}`)
+}
+
 console.log(`Target: ${target}`)
 console.log(`Asset URL: ${url}`)

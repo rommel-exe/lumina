@@ -1,13 +1,13 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
   "productName": "lumina",
-  "version": "0.0.15",
+  "version": "0.0.1",
   "identifier": "com.jackfu.lumina",
   "build": {
     "frontendDist": "../dist",
     "devUrl": "http://localhost:5173",
     "beforeDevCommand": "npm run dev",
-    "beforeBuildCommand": "node /Users/jackfu/TOP/lumina/scripts/bump-tauri-version.mjs && npm run build"
+    "beforeBuildCommand": "npm run build"
   },
   "app": {
     "windows": [
@@ -39,7 +39,7 @@
   },
   "plugins": {
     "updater": {
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDdFQjNBNzlGOThCM0FFQwpSV1RzT292NWVUcnJCN09RcmFscmNoNElYaW9UbjdOVm9FTW1JRldoQ2FZUzVGcjIrdVQ0aVgraAo=",
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDEyQ0U0N0QwM0I2OTc2MkMKUldRc2RtazcwRWZPRWhSWTFqbVB4ZXhNamhWWlc2MDRSZVBZbUtGSzl4SW9LZUJ6VW9XSkhsOGcK",
       "endpoints": [
         "https://github.com/rommel-exe/lumina/releases/latest/download/latest.json"
       ],
